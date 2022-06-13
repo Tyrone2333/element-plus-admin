@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Document</title>
+    <style>
+
+        pre {
+            border: 1px dashed grey;
+            padding: 10px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class='container'>
+    <div class='row'>
+        <h2>hb 请求参数转码</h2>
+    </div>
+    <div class='row'>
+        <button class='btn btn-primary' onclick='handleClipboardClick()'>获取剪切板</button>
+    </div>
+
+    <div class='row'>
+        <p>输入框</p>
+        <textarea id='input-text' cols='50' rows='5'></textarea>
+        <button class='btn btn-primary' onclick='doConversion()'>转码</button>
+    </div>
+
+    <div class='row'>
+        <div>转换结果</div>
+        <textarea id='output-text' cols='50' rows='5'></textarea>
+        <button class='btn btn-primary' onclick='doReduction()'>还原</button>
+    </div>
+
+</div>
+
+
+<script>
+
+    // 浏览器有限制读取剪切板事件需要有按键触发
+
+    const inputField = document.getElementById('input-text')
+    const outputField = document.getElementById('output-text')
+    const notificationField = document.getElementById('notification')
+
+    function handleClipboardClick() {
+        navigator.clipboard.readText().then((text) => {
+            inputField.value = text
+            doConversion()
+        })
+    }
+
+    function encode(text) {
+        return encodeURIComponent(btoa(text))
+    }
+
+    function decode(text) {
+        return atob(decodeURIComponent(text))
+    }
+
+    // 转换
+    function doConversion() {
+        let text = inputField.value
+        let convertedText
+        try {
+            convertedText = decode(text)
+        } catch (e) {
+            console.error(e)
+            outputField.value = e.message
+            return
+        }
+        // copyTextToClipboard(convertedText)
+        outputField.value = convertedText
+    }
+
+    // 还原
+    function doReduction() {
+        let text = outputField.value
+        let convertedText
+        try {
+            convertedText = encode(text)
+        } catch (e) {
+            console.error(e)
+
+            inputField.value = e.message
+            return
+        }
+        // copyTextToClipboard(convertedText)
+        inputField.value = convertedText
+    }
+
+    function fallbackCopyTextToClipboard(text) {
+        var textArea = document.createElement("textarea")
+        textArea.value = text
+        document.body.appendChild(textArea)
+        textArea.focus()
+        textArea.select()
+
+        try {
+            var successful = document.execCommand('copy')
+            var msg = successful ? 'successful' : 'unsuccessful'
+            console.log('Fallback: Copying text command was ' + msg)
+        } catch (err) {
+            console.error('Fallback: Oops, unable to copy', err)
+        }
+
+        document.body.removeChild(textArea)
+    }
+
+    function copyTextToClipboard(text) {
+        if (!navigator.clipboard) {
+            fallbackCopyTextToClipboard(text)
+            return
+        }
+        navigator.clipboard.writeText(text).then(function () {
+            console.log('Async: Copying to clipboard was successful!')
+        }, function (err) {
+            console.error('Async: Could not copy text: ', err)
+        })
+    }
+
+
+</script>
+</body>
+</html>

@@ -94,8 +94,18 @@ export default {
     },
 }
 </script>
+<style lang='postcss' scoped>
 
-<style scoped>
 .var-name-convert {
+  p{
+    margin: 6px;
+  }
+  .child {
+    padding: 10px;
+  }
+
+  h4 {
+    margin: 0;
+  }
 }
 </style>

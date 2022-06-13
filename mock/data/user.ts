@@ -1,4 +1,5 @@
 import { IMenubarList } from '/@/type/store/layout'
+
 export const user = [
     { name: 'admin', pwd: 'admin' },
     { name: 'dev', pwd: 'dev' },
@@ -42,6 +43,8 @@ export const role_route = [
     { roleName: 'admin', id: 43, permission: [] },
     { roleName: 'admin', id: 5, permission: [] },
     { roleName: 'admin', id: 50, permission: ['add', 'update', 'remove'] },
+    { roleName: 'admin', id: 6, permission: [] },
+    { roleName: 'admin', id: 61, permission: [] },
 
     { roleName: 'dev', id: 1, permission: [] },
     { roleName: 'dev', id: 10, permission: [] },
@@ -54,7 +57,24 @@ export const role_route = [
     { roleName: 'test', id: 50, permission: ['update'] }
 ]
 
-export const route:Array<IMenubarList> = [
+export const route: Array<IMenubarList> = [
+    {
+        id: 6,
+        parentId: 0,
+        name: 'tools',
+        path: '/tools',
+        component: 'Layout',
+        redirect: '/tools/varNameConvert',
+        meta: { title: '工具', icon: 'el-icon-tools', alwaysShow: true }
+    },
+    {
+        id: 61,
+        parentId: 6,
+        name: 'varNameConvert',
+        path: '/tools/varNameConvert',
+        component: 'varNameConvert',
+        meta: { title: '指令管理333' }
+    },
     {
         id: 2,
         parentId: 0,
@@ -188,5 +208,5 @@ export const route:Array<IMenubarList> = [
         path: '/Permission/Directive',
         component: 'Directive',
         meta: { title: '指令管理', icon: 'el-icon-goods' }
-    }
+    },
 ]

@@ -48,7 +48,7 @@ export interface IMenubarList {
     path: string
     redirect?: string | {name: string}
     meta: {
-        icon: string
+        icon?: string
         title: string
         permission?: string[]
         activeMenu?: string // 路由设置了该属性，则会高亮相对应的侧边栏

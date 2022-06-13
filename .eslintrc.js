@@ -36,7 +36,6 @@ module.exports = {
         quotes: ['error', 'single'], // 单引号
         'vue/html-quotes': ['error', 'single'],
         semi: ['error', 'never'], // 禁止使用分号
-        'space-infix-ops': ['error', { int32Hint: false }], // 要求操作符周围有空格
         'no-multi-spaces': 'error', // 禁止多个空格
         'no-whitespace-before-property': 'error', // 禁止在属性前使用空格
         'space-before-blocks': 'error', // 在块之前强制保持一致的间距
@@ -46,12 +45,6 @@ module.exports = {
         'spaced-comment': ['error', 'always'], // 注释间隔
         'template-tag-spacing': ['error', 'always'], // 在模板标签及其文字之间需要空格
         'no-var': 'error',
-        'prefer-destructuring': ['error', { // 优先使用数组和对象解构
-            array: true,
-            object: true
-        }, {
-            enforceForRenamedProperties: false
-        }],
         // 组件名称为多个单词，忽略的组件名称
         'vue/multi-word-component-names': ['off'],
         'arrow-spacing': 'error', // 箭头函数空格
@@ -67,5 +60,6 @@ module.exports = {
         'no-submodule-imports': ['off', '/@'],
         'no-implicit-dependencies': ['off', ['/@']],
         '@typescript-eslint/no-explicit-any': 'off', // 类型可以使用any
+        'comma-dangle': ['error', 'only-multiline'],
     }
 }

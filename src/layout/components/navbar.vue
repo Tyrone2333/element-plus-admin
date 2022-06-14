@@ -62,7 +62,6 @@ interface IBreadcrumbList {
 // 面包屑导航
 const breadcrumb = (route: RouteLocationNormalizedLoaded) => {
     const fn = () => {
-  console.log(route,33333)
         const breadcrumbList:Array<IBreadcrumbList> = []
         const notShowBreadcrumbList = ['Dashboard', 'RedirectPage'] // 不显示面包屑的导航
         if(route.matched[0] && (notShowBreadcrumbList.includes(route.matched[0].name as string))) return breadcrumbList

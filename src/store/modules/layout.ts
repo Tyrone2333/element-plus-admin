@@ -225,7 +225,6 @@ export const useLayoutStore = defineStore({
         },
         async GenerateRoutes():Promise<void> {
             const res = await getRouterList()
-            console.log(res)
             const { Data } = res.data
             generatorDynamicRouter(Data)
         }

@@ -15,7 +15,7 @@
 
         <div class='row'>
             <div>转换结果</div>
-            <textarea id='output-text' v-model='outputVal' cols='50' rows='5' />
+            <textarea id='output-text' v-model='outputField' cols='50' rows='5' />
             <el-button class='btn btn-primary' @click='doReduction()'>还原</el-button>
         </div>
 
@@ -31,7 +31,7 @@ export default defineComponent({
     setup() {
 
         let inputField = ref('WyIwLDk5OTkiXQ%3D%3D')
-        let outputVal = ref('outputVal')
+        let outputField = ref('outputField')
 
         // 浏览器有限制读取剪切板事件需要有按键触发
         function handleClipboardClick() {
@@ -61,16 +61,16 @@ export default defineComponent({
             } catch (e) {
                 console.error(e)
                 console.log(e.message)
-                outputVal.value = e.message
+                outputField.value = e.message
                 return
             }
             // copyTextToClipboard(convertedText)
-            outputVal.value = convertedText
+            outputField.value = convertedText
         }
 
         // 还原
         function doReduction() {
-            let text = outputVal.value
+            let text = outputField.value
             let convertedText
             try {
                 convertedText = encode(text)
@@ -86,7 +86,7 @@ export default defineComponent({
 
         return {
             inputField,
-            outputVal,
+            outputField,
             doConversion,
             doReduction,
             handleClipboardClick,

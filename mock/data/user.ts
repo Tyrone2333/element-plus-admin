@@ -46,6 +46,7 @@ export const role_route = [
     { roleName: 'admin', id: 6, permission: [] },
     { roleName: 'admin', id: 61, permission: [] },
     { roleName: 'admin', id: 62, permission: [] },
+    { roleName: 'admin', id: 63, permission: [] },
 
     { roleName: 'dev', id: 1, permission: [] },
     { roleName: 'dev', id: 10, permission: [] },
@@ -76,12 +77,20 @@ export const route: Array<IMenubarList> = [
         component: 'varNameConvert',
         meta: { title: '变量名转换' }
     },
+    // {
+    //     id: 62,
+    //     parentId: 6,
+    //     name: 'hbReqDecode',
+    //     path: '/tools/hbReqDecode',
+    //     component: 'hbReqDecode',
+    //     meta: { title: '海豹请求转码' }
+    // },
     {
-        id: 62,
+        id: 63,
         parentId: 6,
         name: 'hbReqDecode',
         path: '/tools/hbReqDecode',
-        component: 'hbReqDecode',
+        component: 'hbReqDecodeComposable',
         meta: { title: '海豹请求转码' }
     },
     {

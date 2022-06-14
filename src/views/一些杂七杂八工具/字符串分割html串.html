@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>Title</title>
+</head>
+<body>
+飞机票预订官网 | 乌市房产 | 户外装备 | 酒店预订网 | 北京旅行社 | 京郊旅游 | 飞机票网上订票官网 | 郑州旅行社 | 成都青年旅行社 | 自由行 | 大鱼 | 合肥旅游网 | 广东省内游 | 广州旅行社 | 苏州青旅官网 |
+中国国航 | 茶语网 | 房车价格 | 出国留学 | 大连天气预报 | 天气预报30天 | 深圳旅游网 |
+漳州人才网
+
+<script>
+    let str = `序号 消课时间 消课课时 剩余课时 消课形式`
+    let arr = [...new Set(str.split(" "))]
+    let res = ""
+    let htmlTag = "li"
+    const arrayToHtmlList = (arr, listID) => {
+        // arr.map(item => (document.querySelector('#' + listID).innerHTML += `<li>${item}</li>`));
+        arr.map(item => {
+            res += `{ label: '${item}', prop: '${item}' },\n`
+            // res += `<${htmlTag}><a href="#">${item}</a></${htmlTag}>`
+
+        })
+        console.log(res)
+
+        document.writeln(`<pre>${res}</pre>`)
+    }
+
+    arrayToHtmlList(arr)
+</script>
+</body>
+</html>

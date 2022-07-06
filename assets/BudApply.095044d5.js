@@ -1,1 +1,0 @@
-import{_ as e}from"./index.28c7469e.js";import{k as o,z as p,F as n}from"./element-plus.76e3bf80.js";const r=o({name:"BudApply"});function t(a,s,c,d,l,_){return p(),n("div",null," budApply ")}var u=e(r,[["render",t]]);export{u as default};

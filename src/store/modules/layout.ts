@@ -160,7 +160,7 @@ export const useLayoutStore = defineStore({
         },
         setToken(token:string):void {
             this.status.ACCESS_TOKEN = token
-            setLocal('token', this.status, 1000 * 60 * 60)
+            setLocal('token', this.status, 1000 * 60 * 60 * 24 * 7)
         },
         setRoutes(data: Array<IMenubarList>):void {
             this.menubar.menuList = data
@@ -213,7 +213,7 @@ export const useLayoutStore = defineStore({
             const res = await login(param)
             const token = res.data.Data
             this.status.ACCESS_TOKEN = token
-            setLocal('token', this.status, 1000 * 60 * 60)
+            setLocal('token', this.status, 1000 * 60 * 60 * 24 * 7)
             const { query } = router.currentRoute.value
             router.push(typeof query.from === 'string' ? decode(query.from) : '/')
         },
